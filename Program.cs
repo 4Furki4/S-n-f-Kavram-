@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 // Ön atamalı Kurucu metotlar
+/*
 Console.WriteLine("**** Çalışan 1 ****");
 Calisanlar calisan1= new Calisanlar("Furkan","Cengiz",4444,"Doğa Bilimleri");
 calisan1.CalisanAdini_Yazma();
@@ -45,4 +46,82 @@ public void CalisanAdini_Yazma()
     Console.WriteLine("Çalışanın Departmanı: {0}",Departman);
 }
 
-    } 
+    } */
+
+    // Encapsulation
+    Console.WriteLine("**** Öğrenci 1 ****");
+Ogrenci student1= new Ogrenci("Furkan","Cengiz",2357,1);
+student1.Ogrenci_Yoklama();
+Console.WriteLine("**** Öğrenci 2 ****");
+Ogrenci student2= new Ogrenci();
+student2.Ad="Erhan";
+student2.Soyad="Erkut";
+student2.OkulNumarasi=3434;
+student2.Sinif=2;
+student2.Ogrenci_Yoklama();
+student2.Sınıf_Düsür();
+Console.WriteLine(student2.Sinif);
+student2.Sınıf_Düsür();
+student1.Sınıf_Düsür();
+class Ogrenci{
+
+    private string ad;
+    private string soyad;
+    private int okulNumarasi;
+    private int sinif;
+
+    public string Ad { 
+        get 
+        {
+        return ad;
+        } //bu şekliyle de aynıdır
+        set 
+        {
+            ad = value;
+        } 
+    }
+    public string Soyad { get => soyad; set => soyad = value; }
+    public int OkulNumarasi { get => okulNumarasi; set => okulNumarasi = value; } // 
+    public int Sinif { 
+        get => sinif; 
+        set {
+            if (value<1)    // bu şekilde şartlar koyarak property'mizi koruyabiliriz.
+            {
+                sinif=1;
+                Console.WriteLine("Sınıf en az 1 olabilir. Sınıfın Değeri otomatikman 1 olarak ayarlandı.");
+            }else
+            {
+                sinif = value;
+            }
+            
+            }   
+                   
+         }
+
+    private int sinif1;
+    public Ogrenci(string ad, string soyad, int okulNumarasi, int sinif)
+    {
+        Ad = ad;
+        Soyad = soyad;
+        OkulNumarasi = okulNumarasi;
+        Sinif = sinif;
+    }
+    public void Ogrenci_Yoklama(){
+        Console.WriteLine("Öğrencinin Adı: {0}",this.Ad);
+        Console.WriteLine("Öğrencinin Soyadı: {0}",this.Soyad);
+        Console.WriteLine("Öğrencinin Okul Numarası: {0}",this.OkulNumarasi);
+        Console.WriteLine("Öğrencinin Sınıfı: {0}",this.Sinif);
+    }
+    public Ogrenci(){
+
+    }
+    public void Sınıf_Atlat(){
+
+        this.Sinif++;
+    }
+    public void Sınıf_Düsür(){
+
+        this.Sinif--;
+    }
+}
+
